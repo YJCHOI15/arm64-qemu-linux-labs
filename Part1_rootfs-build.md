@@ -50,8 +50,9 @@ $ make qemu_aarch64_virt_defconfig
 
 make 후에 `.config`라는 파일이 생긴다. 이 파일에 qemu와 관련된 설정이 들어가 있다. 
 
-![image.png](attachment:410d3b63-935e-40e5-b561-96936003c7ef:image.png)
+<img width="715" height="126" alt="image" src="https://github.com/user-attachments/assets/2c77e87c-29d7-438e-8a2c-1e56bb3355b4" />
 
+<BR>
 <BR>
 
 # 1-3. menuconfig
@@ -115,6 +116,5 @@ $ make -j<코어개수>
 
 루트파일 시스템 이미지가 생성되고 rootfs.ext4 이미지로 성공적으로 저장되었음을 확인할 수 있다. 
 
-![image.png](attachment:03f068c9-fae1-40f9-b1e0-81872f7ab404:image.png)
-
-![image.png](attachment:9bbb26d8-86cd-4373-87e8-b1a4b0fe4476:image.png)
+<img width="574" height="87" alt="image" src="https://github.com/user-attachments/assets/8ca14bfb-61ed-4fca-9b3c-e1b3cee1ba23" />
+<img width="916" height="140" alt="image" src="https://github.com/user-attachments/assets/1ed321ab-4393-4294-b18a-3df666600d78" />
