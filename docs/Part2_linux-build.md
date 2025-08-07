@@ -4,6 +4,8 @@
 
 마지막으로 빌드한 리눅스 커널과 루트 파일 시스템으로 QEMU에서 리눅스를 실행한다. 
 
+<BR>
+
 # 1. 리눅스 커널 다운로드 및 종속성 패키지 설치
 
 본 프로젝트에서는 가장 안정적인 버전인 stable linux를 사용한다. 
@@ -15,6 +17,7 @@ $ git clone https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/
 $ sudo apt-get update
 $ sudo apt-get install bison flex libelf-dev libssl-dev
 ```
+<BR>
 
 # 2. 툴체인 다운로드
 
@@ -24,13 +27,18 @@ $ sudo apt-get install bison flex libelf-dev libssl-dev
 
 https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads
 
+<BR>
+
 x86-64 리눅스 호스트 환경에서 aarch64 리눅스 커널을 빌드하기 위한 버전이다. 
 
-![image.png](attachment:8c13ada2-4aae-4c22-8ddb-52a95ff28fbb:image.png)
+<img width="919" height="105" alt="image" src="https://github.com/user-attachments/assets/28c7eed2-e85e-42f8-b460-55c5430937bb" />
+
 
 ```bash
 $ tar xvf <툴체인 tar 파일> /linux_ws
 ```
+<BR>
+
 
 # 3. QEMU에서 리눅스 커널 사용하기
 
@@ -42,11 +50,15 @@ Buildroot의 QEMU에서 리눅스 커널을 사용할 수 있도록 커널 설�
 $ cp <buildroot 절대경로>/board/qemu/aarch64-virt/linux.config <linux 절대경로>/arch/arm64/configs/qemu_defconfig
 ```
 
+<BR>
+
 qemu_defconfig 파일을 사용하여, arm64 아키텍처를 타겟으로 하는 QEMU 환경에 최적화된 리눅스 커널 설정 파일(.config)을 생성한다. 
 
 ```bash
 $ ARCH=arm64 make qemu_defconfig
 ```
+
+<BR>
 
 툴체인을 사용해 64비트 ARM용 커널을 빌드한다. 
 
@@ -55,6 +67,7 @@ $ ARCH=arm64 make qemu_defconfig
 ```bash
 $ ARCH=arm64 CROSS_COMPILE=<툴체인 절대경로>/bin/aarch64-none-linux-gnu- make -j<코어 개수>
 ```
+<BR>
 
 # 4. 리눅스 실행
 
@@ -70,10 +83,15 @@ $ qemu-system-aarch64 \
 -m 2G \           # 사용할 메모리
 -smp 2            # qemu 실행에서 사용할 코어 개수
 ```
+<BR>
+
 
 빌드한 루트 파일 시스템과 커널 버전을 확인할 수 있다. 
 
-![image.png](attachment:d009b587-0c81-4d5e-9d14-82608de3a27d:image.png)
+<img width="855" height="399" alt="image" src="https://github.com/user-attachments/assets/f65266fa-93ef-4303-b01c-1b7ddc01a4e9" />
+
+<BR>
+<BR>
 
 종료 명령어로 qemu를 벗어날 수 있다. 
 
