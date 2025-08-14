@@ -59,6 +59,6 @@
 ---
 
 ## 기술 스택
-- **개발 환경:** Ubuntu, QEMU (ARM64), Buildroot
+- **개발 환경:** Ubuntu-20.04(WSL2), vscode, QEMU (ARM64), Buildroot
 - **언어:** C (커널 & 사용자 프로그램)
 - **툴체인:** ARM GNU Toolchain (`aarch64-none-linux-gnu-`)
