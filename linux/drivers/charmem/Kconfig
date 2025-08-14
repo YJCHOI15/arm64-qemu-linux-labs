@@ -1,0 +1,8 @@
+menu "Charmem Module Configuration"
+
+config CHARMEM_MODULE                     # 빌드 옵션 심볼명
+	tristate "Charmem Module"             # y/n/m 세 가지 설정 가능
+	help
+	  This is a kernel module for charmem device driver.
+
+endmenu
