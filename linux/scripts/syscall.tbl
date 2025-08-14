@@ -410,3 +410,5 @@
 467	common	open_tree_attr			sys_open_tree_attr
 468	common	file_getattr			sys_file_getattr
 469	common	file_setattr			sys_file_setattr
+470 common  set_array           sys_set_array
+471 common  get_array           sys_get_array
