@@ -1,7 +1,7 @@
 # Custom System Call: 32-bit Integer Array Access
 
-ARM aarch64 기반 리눅스 커널에 사용자 정의 시스템 콜을 추가하고, QEMU 에뮬레이터에서 테스트하는 과정을 다룹니다. 
-시스템 콜은 32비트 정수형 배열을 설정/조회하는 기능을 제공합니다.
+ARM aarch64 기반 리눅스 커널에 사용자 정의 시스템 콜을 추가하고, QEMU 에뮬레이터에서 테스트하는 과정을 다룬다. 
+두 시스템 콜은 32비트 정수형 배열을 설정/조회하는 기능을 제공한다.
 
 ---
 
@@ -24,24 +24,20 @@ ARM aarch64 기반 리눅스 커널에 사용자 정의 시스템 콜을 추가�
 
 
 ### 2. 커널 빌드 설정
-- `Makefile`에 `obj-y += array_syscalls.o` 추가
-
-<img width="799" height="407" alt="image" src="https://github.com/user-attachments/assets/b8bbb34d-7a70-4c8d-9162-9b629cd82559" /> <br>
-  
+- `/linux/kernel/Makefile`에 `obj-y += array_syscalls.o` 추가
+  - 이 오브젝트를 모듈(.ko)이 아닌 커널 본체(vmlinux)에 포함 시킴  
 - `~/linux/arch/arm64/tools/syscall_64.tbl` 파일에 시스템콜을 추가 (커널 버전 6.11 이상)
-- syscall 번호 할당 (`set_array` → 469, `get_array` → 470)
-
-<img width="884" height="65" alt="image" src="https://github.com/user-attachments/assets/b49df0e1-d99f-4adc-bd47-7e8783a63e6b" />
+  - syscall 번호 할당 (`set_array` → 470, `get_array` → 471)
 
 ---
 
 ## 리눅스 커널 빌드
 
+`/linux` 에서 실행
 ```bash
-ARCH=arm64 CROSS_COMPILE=<툴체인>/bin/aarch64-none-linux-gnu- make -j$(nproc)
+ARCH=arm64 CROSS_COMPILE=<툴체인 디렉토리 절대경로>/bin/aarch64-none-linux-gnu- make -j$(nproc)
 ```
-
-<img width="1151" height="60" alt="image" src="https://github.com/user-attachments/assets/ee43b9ff-9b4d-4d5a-b1bb-9f5d5ec5d712" />
+<img width="904" height="84" alt="image" src="https://github.com/user-attachments/assets/fe36e037-ff4e-41c1-ab31-a3b4f7521301" />
 
 
 빌드 완료 후, `arch/arm64/boot/Image` 생성됨.
@@ -59,12 +55,15 @@ ARCH=arm64 CROSS_COMPILE=<툴체인>/bin/aarch64-none-linux-gnu- make -j$(nproc)
 ```
 
 정상 빌드 여부 확인:
-<img width="1160" height="119" alt="image" src="https://github.com/user-attachments/assets/41c984ba-c0c6-4296-86fd-bce17fdc4c9f" />
+<img width="906" height="113" alt="image" src="https://github.com/user-attachments/assets/576c9726-7cb5-48f2-95cf-ce615d39caa8" />
 
+ARM aarch64에서 실행 가능한 파일임을 확인할 수 있다. 
 
 ---
 
 ## rootfs에 프로그램 배포
+
+rootfs.ext4 안에 `array_program` 실행 파일을 넣어서, QEMU 부팅 환경에 반영한다.
 
 ```bash
 sudo mount -o loop buildroot/output/images/rootfs.ext4 /mnt
@@ -86,9 +85,12 @@ qemu-system-aarch64 \
   -m 2G -smp 2
 ```
 
+<img width="921" height="113" alt="image" src="https://github.com/user-attachments/assets/b9bf11f1-db5a-428b-9f71-bb9e0cb9a356" />
+
+
 ### 예시
 
-<img width="463" height="95" alt="image" src="https://github.com/user-attachments/assets/7d7ee671-f818-4759-9455-fe6532507522" />
+<img width="359" height="81" alt="image" src="https://github.com/user-attachments/assets/af928f50-ebd5-4634-9e33-1adad5f4f0c1" />
 
 
 ---
