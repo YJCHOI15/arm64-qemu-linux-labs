@@ -1,7 +1,10 @@
 # Embedded Linux & Kernel Development Projects
 
 이 레포지토리는 **임베디드 리눅스 환경**에서의 빌드, 분석, 시스템콜 확장, 디바이스 드라이버 구현까지의 전 과정을 다룬 5개의 프로젝트를 포함합니다.  
-모든 실습은 **ARM aarch64 + QEMU** 기반 환경에서 진행되었습니다.
+
+---
+## 전체 아키텍쳐 개요
+<img width="1410" height="873" alt="image" src="https://github.com/user-attachments/assets/6824a83f-dab3-4d21-ae94-e71a3356bc97" />
 
 ---
 
