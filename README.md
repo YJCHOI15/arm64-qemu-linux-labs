@@ -1,6 +1,7 @@
 # Embedded Linux & Kernel Engineering Projects
 
-이 레포지토리는 **임베디드 리눅스 환경**에서의 빌드, 분석, 시스템콜 확장, 디바이스 드라이버 구현까지의 전 과정을 다룬 5개의 프로젝트를 포함한다.  
+이 레포지토리는 **임베디드 리눅스 환경**에서의 빌드, 분석, 시스템콜 확장, 디바이스 드라이버 구현까지의 전 과정을 다룬 5개의 프로젝트를 포함합니다.
+각 프로젝트의 구현 과정은 [docs](https://github.com/YJCHOI15/embedded-linux-kernel/tree/main/docs)를 참고해주세요.
 
 ---
 ## 전체 아키텍쳐 개요
